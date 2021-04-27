@@ -6,6 +6,7 @@ Suite du projet Oquiz, en mode async/await avec login et signup:
   - visualiser son score
   - visualiser les bonnes et mauvaises réponses
   - Fonctionnalistés accessibles aux détenteurs d'un profil admin : ajouter un nouveau tag, modifier un tag, associer un tag à un quizz.
+  - utilisation de routes POST
 
  ## Modules utilisés
  
