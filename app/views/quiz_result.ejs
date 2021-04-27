@@ -1,0 +1,59 @@
+<%- include('partials/header') %>
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h2 class="h1 display-4"><%= quiz.title %></h2>
+    <p class="lead"><%= quiz.description %></p>
+    <p class="font-weight-bold">par <%= quiz.author.fullname %></p>
+    <p class="lead"><%= quiz.questions.length %> questions</p>
+
+    <h3 class="h2 score">Tu as trouvé <%= score %> bonnes réponses</h3>
+</div>
+
+<div class="row">
+
+
+    <% for (let tag of quiz.tags) { %>
+    <div class="col-3 p-4 text-center">
+        <a class="btn btn-block btn-lg tag tag--<%= tag.name.toLowerCase() %>" href="/quizzes/tag/<%= tag.id %>">
+            <%= tag.name %>
+        </a>
+    </div>
+    <% } %>
+
+</div>
+
+<div class="row">
+
+    <div class="col-12">
+
+        <% for(let question of quiz.questions) { %>
+            <label class="badge level level--<%= question.level.name.toLowerCase() %>"><%= question.level.name %></label>
+            <h4>
+                <%= question.question %>
+            </h4>
+                    <% for(let index in question.answers){ %>
+                        <% if(question.answers[index].description == question.good_answer.description) { %>
+                            <li class="correct_answer">
+                        <% } else { %>
+                            <li>
+                        <% } %>
+                        <%= parseInt(index) + 1 %>. <%= question.answers[index].description %>
+                        <% if(question.answers[index].id == submitedQuiz[question.id]) {%>
+                            <% if (submitedQuiz[question.id] == question.good_answer.id) {%>
+                                <span style="color:green"> &#10004; </span>
+                                <% } else {%> 
+                                   <span style="color:red"> X </span>
+                                <% } %>
+                        <% } %>
+                    </li>     
+                    <% } %>
+        <% } %>
+
+        <a class="btn btn-block btn-lg tag--playSame" href="/quiz/<%= quiz.id %>">Rejouer à ce quiz</a>
+        <a class="btn btn-block btn-lg tag--playOther" href="/">Jouer à un autre quiz</a>
+
+    </div>
+
+</div>
+
+<%- include('partials/footer') %>

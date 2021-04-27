@@ -1,0 +1,29 @@
+{
+  "name": "oquiz-partie-2",
+  "version": "1.0.0",
+  "description": "(avril 2021) Suite du projet Oquiz, en mode async/await avec login et signup:   - Permettre aux utilisateurs connectés de jouer   - visualiser son score   - visualiser les bonnes et mauvaises réponses   - Fonctionnalistés accessibles aux détenteurs d'un profil admin : ajouter un nouveau tag, modifier un tag, associer un tag à un quizz.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rusticaille/oquiz-partie-2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rusticaille/oquiz-partie-2/issues"
+  },
+  "homepage": "https://github.com/rusticaille/oquiz-partie-2#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.6",
+    "email-validator": "^2.0.4",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "pg": "^8.6.0",
+    "sequelize": "^6.6.2"
+  }
+}

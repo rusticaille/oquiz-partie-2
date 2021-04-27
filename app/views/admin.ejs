@@ -1,0 +1,55 @@
+<%- include('partials/header') %>
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h2 class="h1 display-4">Administration</h2>
+  <p class="lead">Espace permettant de gérer les quizzes !</p>
+
+  <% if(locals.newTag){ %>
+    <p class="admin_notification"> La catégorie <%= newTag[0].name%> a été créée. </p>
+  <% } %>
+
+  <% if(locals.tagByName){ %>
+    <p class="admin_notification"> La catégorie <%= tagByName.name%> a été supprimée. </p>
+  <% } %>
+
+  <% if(locals.UpdateTagByName){ %>
+    <p class="admin_notification"> La catégorie s'appelle désormais <%= UpdateTagByName.name%>.  </p>
+  <% } %>
+
+  <a class="btn btn-block btn-lg tag tag--admin %>" href="/addtag">Ajouter une catégorie</a>
+  <a class="btn btn-block btn-lg tag tag--admin %>" href="/deletetag">Supprimer une catégorie</a>
+  <a class="btn btn-block btn-lg tag tag--admin %>" href="/updatetag">Modifier une catégorie</a>
+  
+  <form class="admin_select tag--admin" action="/admin" method="POST">
+    <% if(locals.error){%>
+      <p class="lead"><%=error%></p>
+      <% } %>
+
+      <% if(locals.result){%>
+        <p class="lead"><%=result%></p>
+        <% } %>
+
+    <p class="lead">Associez une catégorie à un quiz.</p>
+    <div class="admin_select_items">
+      <label for="quiztag-select">Choisissez un quiz</label>
+      <select name="titre du quiz" id="quiztag-select">
+      <% for(const quiz of quizzes){ %>
+        <option value="<%= quiz.id%>"><%= quiz.title%></option>
+      <% } %>
+      </select>
+    </div>
+
+    <div class="admin_select_items">
+      <label for="quiztag-select">Choisissez une catégorie</label>
+      <select name="id du tag" id="quiztag-select">
+      <% for(const tag of alltags){ %>
+        <option value="<%= tag.id%>"><%= tag.name%></option>
+      <% } %>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-block btn-lg tag tag--admin--white">Associer</button>
+  </form>
+
+</div>
+
+<%- include('partials/footer') %>
